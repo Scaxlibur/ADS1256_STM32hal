@@ -6,7 +6,7 @@
 #include "tim.h"
 #include "gpio.h"
 
-/*
+
 typedef enum{
     ADS1256_CMD_WAKEUP   =  0x00, 
     ADS1256_CMD_RDATA    =  0x01, 
@@ -56,7 +56,7 @@ typedef enum{// define gain codes
     ADS1256_GAIN_16  =   0x04, 
     ADS1256_GAIN_32  =   0x05, 
     ADS1256_GAIN_64   =  0x06, 
-}ADS1256_GAIN_t
+}ADS1256_GAIN_t;
 
 typedef enum{//define drate codes 
     ADS1256_DRATE_30000SPS = 0xF0, 
@@ -75,10 +75,19 @@ typedef enum{//define drate codes
     ADS1256_DRATE_10SPS   =  0x23, 
     ADS1256_DRATE_5SPS    =  0x13, 
     ADS1256_DRATE_2_5SPS  =  0x03,
-}ADS1256_DRATE_t
-*/
+}ADS1256_DRATE_t;
 
-
+#define ADS1256_STATUS      0x00  
+#define ADS1256_MUX         0x01   
+#define ADS1256_ADCON       0x02   // A/D控制寄存器
+#define ADS1256_DRATE       0x03   // A/D读取速率
+#define ADS1256_IO          0x04   
+#define ADS1256_OFC0        0x05   
+#define ADS1256_OFC1        0x06   
+#define ADS1256_OFC2        0x07   
+#define ADS1256_FSC0        0x08   
+#define ADS1256_FSC1        0x09   
+#define ADS1256_FSC2        0x0A
 
 #define CS_0()				HAL_GPIO_WritePin(CS_GPIO_Port, CS_Pin,GPIO_PIN_RESET);
 #define CS_1()				HAL_GPIO_WritePin(CS_GPIO_Port, CS_Pin,GPIO_PIN_SET);
