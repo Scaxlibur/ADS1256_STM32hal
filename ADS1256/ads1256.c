@@ -10,20 +10,20 @@ uint8_t data3=0;
 
 void ADS1256WREG(uint8_t regaddr,uint8_t databyte)
 {
-  wreg += (regaddr & 0x0F);    
+	wreg += (regaddr & 0x0F);    
 	//确保前四位为0101，同时后四位为regaddr的值
-	
+
 	CS_0();
 	while(ADS1256_DRDY);
-	
-  HAL_SPI_Transmit(&hspi1,(uint8_t*)&wreg,1,100);
+
+	HAL_SPI_Transmit(&hspi1,(uint8_t*)&wreg,1,100);
 	//写入寄存器值时，第一个命令为 0101rrrr,第二个为 0000nnnn
 	//同时注意n为需要写入的寄存器减一，写入一个寄存器，所以写入的为0x00
-  //printf("%d\r\n",(uint8_t*)(ADS1256_CMD_WREG | (regaddr & 0x0F)));
-	 //写入一个寄存器
-  HAL_SPI_Transmit(&hspi1,(uint8_t*)&regnumber,1,100);
- 
-  HAL_SPI_Transmit(&hspi1,(uint8_t*)&databyte,1,100);
+	//printf("%d\r\n",(uint8_t*)(ADS1256_CMD_WREG | (regaddr & 0x0F)));
+	//写入一个寄存器
+	HAL_SPI_Transmit(&hspi1,(uint8_t*)&regnumber,1,100);
+
+	HAL_SPI_Transmit(&hspi1,(uint8_t*)&databyte,1,100);
 	CS_1();
 	wreg = 0x50;
 }
