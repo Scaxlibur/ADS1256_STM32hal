@@ -21,7 +21,7 @@
 #include "usart.h"
 
 /* USER CODE BEGIN 0 */
-uint8_t u_buf[256];
+
 /* USER CODE END 0 */
 
 UART_HandleTypeDef huart1;
@@ -110,17 +110,6 @@ void HAL_UART_MspDeInit(UART_HandleTypeDef* uartHandle)
 }
 
 /* USER CODE BEGIN 1 */
-/*
-int _write (int fd, char *pBuffer, int size)
-{
-    for (int i = 0; i < size; i++)
-    {
-        while((USART1->SR&0X40)==0);//等待上一次串口数据发送完成
-        USART1->DR = (uint8_t) pBuffer[i];       //写DR,串口1将发送数据
-    }
-    return size;
-}
-*/
 int _write(int fd, char *ptr, int len)
 {
     HAL_UART_Transmit(&huart1, (uint8_t*)ptr, len, 0xFFFF);

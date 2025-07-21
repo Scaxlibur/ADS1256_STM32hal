@@ -58,10 +58,10 @@ void Error_Handler(void);
 /* USER CODE END EFP */
 
 /* Private defines -----------------------------------------------------------*/
-#define DRDY_Pin GPIO_PIN_3
-#define DRDY_GPIO_Port GPIOC
-#define CS_Pin GPIO_PIN_2
+#define CS_Pin GPIO_PIN_1
 #define CS_GPIO_Port GPIOA
+#define DRDY_Pin GPIO_PIN_5
+#define DRDY_GPIO_Port GPIOC
 
 /* USER CODE BEGIN Private defines */
 

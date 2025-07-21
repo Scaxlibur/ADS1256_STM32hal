@@ -29,26 +29,20 @@ extern "C" {
 #include "main.h"
 
 /* USER CODE BEGIN Includes */
-	
-#include <stdio.h>
-#include <string.h>
-
-#define printf(...)  HAL_UART_Transmit(&huart1, (uint8_t *)u_buf, sprintf((char*)u_buf, __VA_ARGS__), 0xffff)
-
-extern uint8_t u_buf[256];
 
 /* USER CODE END Includes */
 
 extern UART_HandleTypeDef huart1;
 
 /* USER CODE BEGIN Private defines */
-void Print_Float(float Vaule);
+
 /* USER CODE END Private defines */
 
 void MX_USART1_UART_Init(void);
 
 /* USER CODE BEGIN Prototypes */
-
+int _write(int fd, char *ptr, int len);
+void Print_Float(float Vaule);
 /* USER CODE END Prototypes */
 
 #ifdef __cplusplus

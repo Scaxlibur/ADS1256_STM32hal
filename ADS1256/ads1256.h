@@ -5,7 +5,7 @@
 #include "spi.h"
 #include "gpio.h"
 
-typedef enum ADS_1256_CMD_t{
+typedef enum ADS1256_CMD_t{
     ADS1256_CMD_WAKEUP   =  0x00,   // 完成同步并退出待机模式
     ADS1256_CMD_RDATA    =  0x01,   // 读取数据
     ADS1256_CMD_RDATAC   =  0x03,   // 连续读取数据 
@@ -20,7 +20,7 @@ typedef enum ADS_1256_CMD_t{
     ADS1256_CMD_SYNC     =  0xfc,   // 同步 A/D 转换
     ADS1256_CMD_STANDBY  =  0xfd,   // 进入待机模式
     ADS1256_CMD_REST     =  0xfe,   // 重置为上电值
-}ADS_1256_CMD_t;
+}ADS1256_CMD_t;
 
 typedef enum ADS1256_MUXP_t{// define 多路复用 p为正通道，n为负通道
     ADS1256_MUXP_AIN0   =  0x00, 
@@ -138,8 +138,10 @@ typedef enum ADS1256_SENSOR_CURRENT_SOURCE_t{//传感器检测电流源
 
 void ADS1256WREG(uint8_t regaddr,uint8_t databyte);
 
-void ADS1256_Init(void);
+void ADS1256_Init(ADS1256_CMD_t _cmd, ADS1256_DRATE_t _drate ,ADS1256_GAIN_t _gain ,ADS1256_CLOCK_t _clock ,ADS1256_SENSOR_CURRENT_SOURCE_t _sensor);
 
 uint32_t ADS1256ReadData(uint8_t channel);
+
+double ADS1256_convert2volt(uint8_t channel);
 
 #endif
