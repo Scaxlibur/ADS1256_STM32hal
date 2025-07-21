@@ -42,7 +42,6 @@ void MX_USART1_UART_Init(void);
 
 /* USER CODE BEGIN Prototypes */
 int _write(int fd, char *ptr, int len);
-void Print_Float(float Vaule);
 /* USER CODE END Prototypes */
 
 #ifdef __cplusplus
